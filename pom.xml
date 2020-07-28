@@ -10,8 +10,8 @@
 		<dependency>
 			<groupId>com.google.cloud.functions</groupId>
 			<artifactId>functions-framework-api</artifactId>
-			<version>1.0.1</version>
-			<scope>provided</scope>
+			<version>LATEST</version>
+			<scope>compile</scope>
 			<exclusions/>
 		</dependency>
 	</dependencies>

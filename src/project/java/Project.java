@@ -1,3 +1,5 @@
+import javax.lang.model.SourceVersion;
+
 /*
  * Copyright (C) 2020 cointoss-functions Development Team
  *
@@ -12,6 +14,7 @@ public class Project extends bee.api.Project {
     {
         product("com.github.teletha", "cointoss-functions", "1.0");
 
+        require(SourceVersion.RELEASE_11);
         require("com.google.cloud.functions", "functions-framework-api");
     }
 }
