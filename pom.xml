@@ -1,44 +1,52 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.example.cloud.functions</groupId>
-  <artifactId>functions-hello-world</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <properties>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
-  </properties>
-
-  <dependencies>
-    <!-- Required for Function primitives -->
-    <dependency>
-      <groupId>com.google.cloud.functions</groupId>
-      <artifactId>functions-framework-api</artifactId>
-      <version>1.0.1</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <!--
-          Google Cloud Functions Framework Maven plugin
-
-          This plugin allows you to run Cloud Functions Java code
-          locally. Use the following terminal command to run a
-          given function locally:
-
-          mvn function:run -Drun.functionTarget=your.package.yourFunction
-        -->
-        <groupId>com.google.cloud.functions</groupId>
-        <artifactId>function-maven-plugin</artifactId>
-        <version>0.9.3</version>
-        <configuration>
-          <functionTarget>cointoss.Main</functionTarget>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.teletha</groupId>
+	<artifactId>cointoss-functions</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+	<name>cointoss-functions</name>
+	<description/>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.google.cloud.functions</groupId>
+			<artifactId>functions-framework-api</artifactId>
+			<version>LATEST</version>
+			<scope>compile</scope>
+			<exclusions/>
+		</dependency>
+	</dependencies>
+	<licenses>
+		<license>
+			<name>The MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+	<repositories>
+		<repository>
+			<id>Maven</id>
+			<name>repo1.maven.org</name>
+			<url>https://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>JCenter</id>
+			<name>jcenter.bintray.com</name>
+			<url>https://jcenter.bintray.com/</url>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>14</source>
+					<target>14</target>
+					<encoding>UTF-8</encoding>
+					<compilerArgs>
+						<arg>-proc:none</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
