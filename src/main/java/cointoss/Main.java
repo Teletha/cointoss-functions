@@ -15,6 +15,8 @@ import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpResponse;
 
+import kiss.I;
+
 public class Main implements HttpFunction {
 
     /**
@@ -23,6 +25,6 @@ public class Main implements HttpFunction {
     @Override
     public void service(HttpRequest request, HttpResponse response) throws Exception {
         BufferedWriter writer = response.getWriter();
-        writer.write("Update");
+        writer.write(I.join(" ", "H", "e", "l", "l", "o", "!"));
     }
 }

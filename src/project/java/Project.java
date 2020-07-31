@@ -16,5 +16,6 @@ public class Project extends bee.api.Project {
 
         require(SourceVersion.RELEASE_11);
         require("com.google.cloud.functions", "functions-framework-api");
+        require("com.github.teletha", "sinobu");
     }
 }
