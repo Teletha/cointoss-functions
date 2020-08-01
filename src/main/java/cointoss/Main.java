@@ -26,5 +26,6 @@ public class Main implements HttpFunction {
     public void service(HttpRequest request, HttpResponse response) throws Exception {
         BufferedWriter writer = response.getWriter();
         writer.write(I.join(" ", "H", "e", "l", "l", "o", "!"));
+        writer.write("World");
     }
 }

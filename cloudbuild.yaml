@@ -4,5 +4,5 @@ steps:
   - functions
   - deploy
   - function-18
-  - --source=.
+  - --source=https://source.developers.google.com/projects/jackpot-fefff/repos/github_teletha_cointoss-functions
   - --trigger-http
