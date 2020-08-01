@@ -1,7 +1,6 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- name: 'gcr.io/cloud-builders/gcloud'
   args:
-  - gcloud
   - functions
   - deploy
   - function-18
