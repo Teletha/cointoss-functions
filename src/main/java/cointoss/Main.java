@@ -44,7 +44,7 @@ public class Main implements HttpFunction {
         writer.write(bitmex());
 
         GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
-        FirebaseOptions options = FirebaseOptions.builder().setCredentials(credentials).setProjectId("jackpot").build();
+        FirebaseOptions options = FirebaseOptions.builder().setCredentials(credentials).setProjectId("jackpot-fefff").build();
         FirebaseApp.initializeApp(options);
 
         Firestore db = FirestoreClient.getFirestore();
