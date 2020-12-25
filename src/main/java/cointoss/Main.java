@@ -13,7 +13,6 @@ import java.io.BufferedWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -37,8 +36,9 @@ public class Main implements HttpFunction {
         BufferedWriter writer = response.getWriter();
         writer.write(bitmex());
 
-        Path path = Path.of("gs://cointoss-function/test.txt");
-        Files.writeString(path, "test", StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+        Path path = Path.of("gs://cointoss-function/2020-11-25 00.log");
+        String readString = Files.readString(path, StandardCharsets.UTF_8);
+        writer.write(readString);
     }
 
     private String bitmex() {
