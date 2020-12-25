@@ -39,7 +39,6 @@ public class Main implements HttpFunction {
                 .waitForTerminate()
                 .map(root -> {
                     BitMex mex = new BitMex();
-                    mex.date = ZonedDateTime.now(ZoneId.of("UTC")).truncatedTo(ChronoUnit.MINUTES);
 
                     for (JSON e : root.find("*")) {
                         double value = e.get(double.class, "openValue");
@@ -65,7 +64,7 @@ public class Main implements HttpFunction {
 
         public List<BitMexInfo> infos = new ArrayList();
 
-        public ZonedDateTime date;
+        public ZonedDateTime date = ZonedDateTime.now(ZoneId.of("UTC")).truncatedTo(ChronoUnit.MINUTES);
     }
 
     private static class BitMexInfo {
