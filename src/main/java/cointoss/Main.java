@@ -10,11 +10,9 @@
 package cointoss;
 
 import java.io.BufferedWriter;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -24,6 +22,7 @@ import java.util.List;
 import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpResponse;
+import com.google.cloud.storage.contrib.nio.CloudStorageFileSystem;
 
 import kiss.I;
 import kiss.JSON;
@@ -38,12 +37,13 @@ public class Main implements HttpFunction {
         BufferedWriter writer = response.getWriter();
         writer.write(bitmex());
 
-        Path path = Paths.get(URI.create("gs://cointoss-function/2020-11-25 00.log"));
-        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-        for (String line : lines) {
-            writer.write(line + "\r\n");
+        try (CloudStorageFileSystem fs = CloudStorageFileSystem.forBucket("cointoss-function")) {
+            Path path = fs.getPath("2020-11-25 00.log");
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+            for (String line : lines) {
+                writer.write(line + "\r\n");
+            }
         }
-
     }
 
     private String bitmex() {
