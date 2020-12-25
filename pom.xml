@@ -16,7 +16,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.cloud</groupId>
-			<artifactId>google-cloud-storage</artifactId>
+			<artifactId>google-cloud-nio</artifactId>
 			<version>LATEST</version>
 			<scope>compile</scope>
 			<exclusions/>
