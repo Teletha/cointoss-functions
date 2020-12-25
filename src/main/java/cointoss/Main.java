@@ -10,6 +10,7 @@
 package cointoss;
 
 import java.io.BufferedWriter;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,7 +37,7 @@ public class Main implements HttpFunction {
         BufferedWriter writer = response.getWriter();
         writer.write(bitmex());
 
-        Path path = Path.of("gs://cointoss-function/2020-11-25 00.log");
+        Path path = Path.of(URI.create("gs://cointoss-function/2020-11-25 00.log"));
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
         for (String line : lines) {
             writer.write(line + "\r\n");
