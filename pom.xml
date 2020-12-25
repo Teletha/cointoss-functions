@@ -8,15 +8,15 @@
 	<description/>
 	<dependencies>
 		<dependency>
-			<groupId>com.google.cloud.functions</groupId>
-			<artifactId>functions-framework-api</artifactId>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
 			<version>LATEST</version>
 			<scope>compile</scope>
 			<exclusions/>
 		</dependency>
 		<dependency>
-			<groupId>com.google.cloud</groupId>
-			<artifactId>google-cloud-nio</artifactId>
+			<groupId>com.google.cloud.functions</groupId>
+			<artifactId>functions-framework-api</artifactId>
 			<version>LATEST</version>
 			<scope>compile</scope>
 			<exclusions/>
