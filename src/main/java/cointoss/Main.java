@@ -14,21 +14,11 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import com.google.api.core.ApiFuture;
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
 import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpResponse;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.cloud.FirestoreClient;
 
 import kiss.I;
 import kiss.JSON;
@@ -42,23 +32,6 @@ public class Main implements HttpFunction {
     public void service(HttpRequest request, HttpResponse response) throws Exception {
         BufferedWriter writer = response.getWriter();
         writer.write(bitmex());
-
-        GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
-        FirebaseOptions options = FirebaseOptions.builder().setCredentials(credentials).setProjectId("jackpot-fefff").build();
-        FirebaseApp.initializeApp(options);
-
-        Firestore db = FirestoreClient.getFirestore();
-        DocumentReference docRef = db.collection("users").document("alovelace");
-        // Add document data with id "alovelace" using a hashmap
-        Map<String, Object> data = new HashMap<>();
-        data.put("first", "Ada");
-        data.put("last", "Lovelace");
-        data.put("born", 1815);
-        // asynchronously write data
-        ApiFuture<WriteResult> result = docRef.set(data);
-        // ...
-        // result.get() blocks on response
-        System.out.println("Update time : " + result.get().getUpdateTime());
     }
 
     private String bitmex() {
